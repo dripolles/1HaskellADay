@@ -19,11 +19,9 @@ import Data.List
 nGrams :: Int -> [a] -> [[a]]
 nGrams n = unfoldr go where
     go [] = Nothing
-    go xs = return (take n xs, shortTail) where
-        shortTail =
-            let ts = tail xs
-            in if length (take n ts) == n then ts else []
-    
+    go xs@(x:xs') = return (take n xs, shortTail) where
+        shortTail = if length (take n xs') == n then xs' else []
+
 main = do
     print $ nGrams 3 [1..10]
     print $ take 5 $ nGrams 4 [1..]
