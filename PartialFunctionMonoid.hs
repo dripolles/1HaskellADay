@@ -28,14 +28,12 @@ instance Monoid (PartialFunction a b) where
 -}
 
 f1 :: Int -> Maybe Int
-f1 x
-    | (even x) && (x <= 1000) = Just $ x `div` 2
-    | otherwise = Nothing
+f1 x | (even x) && (x <= 1000) = Just $ x `div` 2
+     | otherwise = Nothing
 
 f2 :: Int -> Maybe Int
-f2 x
-    | x <= 500 = Just $ x * 2
-    | otherwise = Nothing
+f2 x | x <= 500 = Just $ x * 2
+     | otherwise = Nothing
 
 pfMonoidExample :: Int -> Maybe Int
 pfMonoidExample = let (PF pf) = (PF f1) `mappend` (PF f2) in pf

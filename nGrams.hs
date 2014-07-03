@@ -1,4 +1,5 @@
 import Data.List
+import Test.QuickCheck
 
 -- $setup
 -- >>> import Test.QuickCheck
@@ -26,3 +27,6 @@ main = do
     print $ nGrams 3 [1..10]
     print $ take 5 $ nGrams 4 [1..]
     print $ nGrams 10 [1..3]
+    quickCheck ( \(NonEmpty xs) -> (concat $ nGrams 1 xs) == ( xs :: [ Int ] ) )
+    quickCheck ( \(Positive n, NonEmpty xs) -> (length $ nGrams n xs)
+                                             == max 1 ((length ( xs :: [ Int ] ) ) - n + 1) )

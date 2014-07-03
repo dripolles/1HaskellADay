@@ -15,4 +15,3 @@ main = do
     print $ matchingSub 10 [0..10]
     print $ matchingSub 2 $ replicate 3 1
     print $ take 2 $ matchingSub 2 $ repeat 1
-
